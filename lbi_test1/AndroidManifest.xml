@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="org.letsbuyindian.lbi_test1"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="8"
+        android:targetSdkVersion="21" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name" >
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        
+        <activity android:name="org.letsbuyindian.lbi_test1.personals" ></activity>
+        <activity android:name="org.letsbuyindian.lbi_test1.lifestyles" ></activity>
+        <activity android:name="org.letsbuyindian.lbi_test1.grocerys" ></activity>
+	    <activity android:name="org.letsbuyindian.lbi_test1.beverages" ></activity>
+        <activity android:name="org.letsbuyindian.lbi_test1.households" ></activity>
+        <activity android:name="org.letsbuyindian.lbi_test1.webservices" ></activity>
+    	<activity android:name="org.letsbuyindian.lbi_test1.electronics" ></activity>
+    	<activity android:name="org.letsbuyindian.lbi_test1.automobiles" ></activity>
+    	<activity android:name="org.letsbuyindian.lbi_test1.services" ></activity>
+    	<activity android:name="org.letsbuyindian.lbi_test1.others" ></activity>
+    </application>
+
+</manifest>

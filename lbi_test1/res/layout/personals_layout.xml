@@ -1,0 +1,72 @@
+ <ScrollView
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent">
+  
+ <LinearLayout
+     android:baselineAligned="false"
+  android:layout_width="fill_parent"
+  android:layout_height="wrap_content">
+
+<org.letsbuyindian.lbi_test1.DashboardLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="0dp"
+    android:layout_height="600dp"
+    android:layout_weight="1"
+    android:background="#ffffff"
+    android:orientation="vertical"
+    android:isScrollContainer="true" >
+
+
+
+    <Button
+        style="@style/DashboardButton"
+        android:drawableTop="@drawable/p_baby"
+        android:text="Baby Care"  />
+     
+
+    <Button
+        style="@style/DashboardButton"
+        android:drawableTop="@drawable/p_cosmetic"
+        android:text="Cosmetics" />
+     
+
+    <Button
+        style="@style/DashboardButton"
+        android:drawableTop="@drawable/p_deo"
+        android:text="Deos and Perfumes" />
+     
+
+    <Button
+        style="@style/DashboardButton"
+        android:drawableTop="@drawable/p_hair"
+        android:text="Hair care" />
+ 
+
+    <Button
+        style="@style/DashboardButton"
+        android:drawableTop="@drawable/p_skin"
+        android:text="Skin Care" />
+ 
+
+    <Button
+        style="@style/DashboardButton"
+        android:drawableTop="@drawable/p_hygine"
+        android:text="Personal hygine" />
+    
+
+    <Button
+        style="@style/DashboardButton"
+        android:drawableTop="@drawable/p_sanitary"
+        android:text="Sanitary needs" />
+    
+
+    <Button
+        style="@style/DashboardButton"
+        android:drawableTop="@drawable/p_otc"
+        android:text="OTC Drugs" />
+    
+
+</org.letsbuyindian.lbi_test1.DashboardLayout>
+</LinearLayout>
+</ScrollView>

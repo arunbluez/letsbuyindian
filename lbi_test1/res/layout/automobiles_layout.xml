@@ -1,0 +1,91 @@
+ <ScrollView
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent">
+  
+ <LinearLayout
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent">
+
+<org.letsbuyindian.lbi_test1.DashboardLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="800dp"
+    android:layout_weight="1"
+    android:background="#ffffff"
+    android:orientation="vertical"
+    android:isScrollContainer="true" >
+
+    <!--  Personal Button -->
+
+    <Button
+        android:id="@+id/btn_personals"
+        style="@style/DashboardButton"
+        android:drawableTop="@drawable/btn_automobiles"
+        android:text="Personal Care"  />
+     
+    <!--  Lifestyle Button -->
+    <Button
+        android:id="@+id/btn_lifestyles"
+        style="@style/DashboardButton"
+        android:drawableTop="@drawable/btn_automobiles"
+        android:text="Lifestyle" />
+     
+    <!--  Grocery Button -->
+    <Button
+        android:id="@+id/btn_grocerys"
+        style="@style/DashboardButton"
+        android:drawableTop="@drawable/btn_automobiles"
+        android:text="Grocery" />
+     
+    <!--  Beverages Button -->
+    <Button
+        android:id="@+id/btn_beverages"
+        style="@style/DashboardButton"
+        android:drawableTop="@drawable/btn_automobiles"
+        android:text="Beverages" />
+ 
+    <!--  Household Button -->
+    <Button
+        android:id="@+id/btn_households"
+        style="@style/DashboardButton"
+        android:drawableTop="@drawable/btn_automobiles"
+        android:text="Household" />
+ 
+    <!--  Webservices Button -->
+    <Button
+        android:id="@+id/btn_webservices"
+        style="@style/DashboardButton"
+        android:drawableTop="@drawable/btn_automobiles"
+        android:text="Web Services" />
+    
+    <!--  Elecetroncis Button -->
+    <Button
+        android:id="@+id/btn_electronics"
+        style="@style/DashboardButton"
+        android:drawableTop="@drawable/btn_automobiles"
+        android:text="Home Electronics" />
+    
+    <!--  Automobiles Button -->
+    <Button
+        android:id="@+id/btn_automobiles"
+        style="@style/DashboardButton"
+        android:drawableTop="@drawable/btn_automobiles"
+        android:text="Automobiles" />
+    
+    <!--  Services Button -->
+    <Button
+        android:id="@+id/btn_services"
+        style="@style/DashboardButton"
+        android:drawableTop="@drawable/btn_automobiles"
+        android:text="Services" />
+    
+       <!--  Others Button -->
+    <Button
+        android:id="@+id/btn_others"
+        style="@style/DashboardButton"
+        android:drawableTop="@drawable/btn_automobiles"
+        android:text="Other products" />
+</org.letsbuyindian.lbi_test1.DashboardLayout>
+</LinearLayout>
+</ScrollView>
