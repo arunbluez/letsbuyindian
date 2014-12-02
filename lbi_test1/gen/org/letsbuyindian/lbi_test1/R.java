@@ -1679,7 +1679,7 @@ containing a value of this type.
         public static final int action_mode_bar=0x7f090030;
         public static final int action_mode_bar_stub=0x7f09002f;
         public static final int action_mode_close_button=0x7f090022;
-        public static final int action_settings=0x7f09004c;
+        public static final int action_settings=0x7f090053;
         public static final int activity_chooser_view_content=0x7f090023;
         public static final int always=0x7f090014;
         public static final int beginning=0x7f09001b;
@@ -1691,6 +1691,9 @@ containing a value of this type.
         public static final int btn_households=0x7f090045;
         public static final int btn_lifestyles=0x7f090042;
         public static final int btn_others=0x7f09004a;
+        public static final int btn_p_baby=0x7f09004f;
+        public static final int btn_p_cosmetic=0x7f090050;
+        public static final int btn_p_deo=0x7f090051;
         public static final int btn_personals=0x7f090041;
         public static final int btn_services=0x7f090049;
         public static final int btn_webservices=0x7f090046;
@@ -1711,12 +1714,16 @@ containing a value of this type.
         public static final int icon=0x7f090028;
         public static final int ifRoom=0x7f090016;
         public static final int image=0x7f090025;
+        public static final int label=0x7f090052;
         public static final int listMode=0x7f09000a;
         public static final int list_item=0x7f090027;
+        public static final int logoView=0x7f09004c;
         public static final int middle=0x7f09001d;
         public static final int never=0x7f090017;
         public static final int none=0x7f09000f;
         public static final int normal=0x7f09000b;
+        public static final int productDesc=0x7f09004e;
+        public static final int productName=0x7f09004d;
         public static final int progress_circular=0x7f090007;
         public static final int progress_horizontal=0x7f090008;
         public static final int radio=0x7f09002d;
@@ -1793,10 +1800,10 @@ containing a value of this type.
         public static final int abc_search_dropdown_item_icons_2line=0x7f030014;
         public static final int abc_search_view=0x7f030015;
         public static final int abc_simple_dropdown_hint=0x7f030016;
-        public static final int actionbar_layout=0x7f030017;
-        public static final int automobiles_layout=0x7f030018;
-        public static final int beverages_layout=0x7f030019;
-        public static final int dashboard_layout=0x7f03001a;
+        public static final int automobiles_layout=0x7f030017;
+        public static final int beverages_layout=0x7f030018;
+        public static final int dashboard_layout=0x7f030019;
+        public static final int description_layout=0x7f03001a;
         public static final int electronics_layout=0x7f03001b;
         public static final int footer_layout=0x7f03001c;
         public static final int fragment_layout=0x7f03001d;
@@ -1805,9 +1812,10 @@ containing a value of this type.
         public static final int lifestyles_layout=0x7f030020;
         public static final int others_layout=0x7f030021;
         public static final int personals_layout=0x7f030022;
-        public static final int services_layout=0x7f030023;
-        public static final int support_simple_spinner_dropdown_item=0x7f030024;
-        public static final int webservices_layout=0x7f030025;
+        public static final int products_layout=0x7f030023;
+        public static final int services_layout=0x7f030024;
+        public static final int support_simple_spinner_dropdown_item=0x7f030025;
+        public static final int webservices_layout=0x7f030026;
     }
     public static final class menu {
         public static final int main=0x7f0c0000;
@@ -1872,19 +1880,6 @@ containing a value of this type.
     }
     public static final class style {
         public static final int ActionBarCompat=0x7f0b00eb;
-        /** 
-        Base application theme for API 11+. This theme completely replaces
-        AppBaseTheme from res/values/styles.xml on API 11+ devices.
-    
- API 11 theme customizations can go here. 
-
-        Base application theme for API 14+. This theme completely replaces
-        AppBaseTheme from BOTH res/values/styles.xml and
-        res/values-v11/styles.xml on API 14+ devices.
-    
- API 14 theme customizations can go here. 
-         */
-        public static final int AppBaseTheme=0x7f0b00ee;
         public static final int Base_TextAppearance_AppCompat=0x7f0b0098;
         public static final int Base_TextAppearance_AppCompat_Body1=0x7f0b00a3;
         public static final int Base_TextAppearance_AppCompat_Body2=0x7f0b00a2;

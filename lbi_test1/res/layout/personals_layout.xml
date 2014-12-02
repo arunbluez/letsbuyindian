@@ -20,18 +20,21 @@
 
 
     <Button
+        android:id="@+id/btn_p_baby"
         style="@style/DashboardButton"
         android:drawableTop="@drawable/p_baby"
         android:text="Baby Care"  />
      
 
     <Button
+        android:id="@+id/btn_p_cosmetic"
         style="@style/DashboardButton"
         android:drawableTop="@drawable/p_cosmetic"
         android:text="Cosmetics" />
      
 
     <Button
+        android:id="@+id/btn_p_deo"
         style="@style/DashboardButton"
         android:drawableTop="@drawable/p_deo"
         android:text="Deos and Perfumes" />

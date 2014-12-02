@@ -1,18 +1,44 @@
 package org.letsbuyindian.lbi_test1;
  
+import java.util.List;
+
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
  
 public class MainActivity extends Activity {
 	public static String mainCat;
+	
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.dashboard_layout);
-         
+        //--- sqllite initiate ---//
+        MySQLiteHelper db = new MySQLiteHelper(this);
+        
+        // delete old database
+        db.deleteProducts();
+        
+        //get image from drawable
+        Bitmap image_lux = BitmapFactory.decodeResource(getResources(), R.drawable.p_baby);
+        
+        // convert bitmap to byte
+        /**
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        image.compress(Bitmap.CompressFormat.JPEG, 100, stream);
+        byte imageInByte[] = stream.toByteArray();**/
+        
+        db.addProduct(new Product("Lux", image_lux,"This is a lux soap"));
+        db.addProduct(new Product("Hamam", BitmapFactory.decodeResource(getResources(), R.drawable.p_deo),"This is hamam soap"));
+        
+        // show all products in LogCat
+        
+        
+        
         /**
          * Creating all buttons instances
          * */

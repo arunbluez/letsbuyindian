@@ -2,6 +2,7 @@ package org.letsbuyindian.lbi_test1;
 
 import android.app.Activity;
 import android.os.Bundle;
+import org.letsbuyindian.lbi_test1.R;
 
 public class services extends Activity {
 	 /** Called when the activity is first created. */
