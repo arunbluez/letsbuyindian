@@ -3,7 +3,7 @@
     package="org.letsbuyindian.lbi_test1"
     android:versionCode="1"
     android:versionName="1.0" >
-
+<uses-permission android:name="android.permission.INTERNET"/>
     <uses-sdk
         android:minSdkVersion="8"
         android:targetSdkVersion="21" />
@@ -21,7 +21,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        
+         
+         
         <activity android:name="org.letsbuyindian.lbi_test1.personals" ></activity>
         <activity android:name="org.letsbuyindian.lbi_test1.lifestyles" ></activity>
         <activity android:name="org.letsbuyindian.lbi_test1.grocerys" ></activity>
@@ -35,5 +36,5 @@
     	<activity android:name="org.letsbuyindian.lbi_test1.ProductList" ></activity>
     	<activity android:name="org.letsbuyindian.lbi_test1.DescriptionScreen" ></activity>
     </application>
-
+   
 </manifest>

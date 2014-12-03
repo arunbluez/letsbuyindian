@@ -1,30 +1,50 @@
 package org.letsbuyindian.lbi_test1;
  
-import java.util.List;
+import java.util.ArrayList;
+import java.util.HashMap;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ListAdapter;
+import android.widget.SimpleAdapter;
  
 public class MainActivity extends Activity {
 	public static String mainCat;
+	
+	MySQLiteHelper db = new MySQLiteHelper(this);
+	
+	private String URL_ITEMS = "http://axismarketingteam.com/lbi/getProduct.php";
+    private static final String TAG_PRODUCTS = "products";
+    private static final String TAG_NAME = "name";
+    private static final String TAG_IMAGE = "image";
+    private static final String TAG_DESCRIPTION = "description";
+    JSONArray matchProduct = null;
+    ArrayList<HashMap<String, String>> matchProductList = new ArrayList<HashMap<String, String>>();
+	
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.dashboard_layout);
-        //--- sqllite initiate ---//
-        MySQLiteHelper db = new MySQLiteHelper(this);
         
-        // delete old database
-        db.deleteProducts();
-        
+        //db.deleteProducts();
+        //json server code//
+        new GetProducts().execute();
+
+       
         //get image from drawable
-        Bitmap image_lux = BitmapFactory.decodeResource(getResources(), R.drawable.p_baby);
+        
         
         // convert bitmap to byte
         /**
@@ -32,8 +52,6 @@ public class MainActivity extends Activity {
         image.compress(Bitmap.CompressFormat.JPEG, 100, stream);
         byte imageInByte[] = stream.toByteArray();**/
         
-        db.addProduct(new Product("Lux", image_lux,"This is a lux soap"));
-        db.addProduct(new Product("Hamam", BitmapFactory.decodeResource(getResources(), R.drawable.p_deo),"This is hamam soap"));
         
         // show all products in LogCat
         
@@ -173,5 +191,71 @@ public class MainActivity extends Activity {
                 startActivity(i);
             }
         });
+    }
+    private class GetProducts extends AsyncTask<Void, Void, Void> {
+        @Override
+            protected void onPreExecute() {
+            super.onPreExecute();
+        }
+        @Override
+            protected Void doInBackground(Void... arg) {
+            ServiceHandler serviceClient = new ServiceHandler();
+            Log.d("url: ", "> " + URL_ITEMS);
+            String json = serviceClient.makeServiceCall(URL_ITEMS,ServiceHandler.GET);
+            // print the json response in the log
+            Log.d("Get match fixture response: ", "> " + json);
+            if (json != null) {
+                try {
+                    Log.d("try", "in the try");
+                    JSONObject jsonObj = new JSONObject(json);
+                    Log.d("jsonObject", "new json Object");
+                    // Getting JSON Array node
+                    matchProduct = jsonObj.getJSONArray(TAG_PRODUCTS);
+                    Log.d("json aray", "user point array");
+              
+                    Log.d("len", "get array length");
+                    for (int i = 0; i < matchProduct.length(); i++) {
+                        JSONObject c = matchProduct.getJSONObject(i);
+                        String name = c.getString(TAG_NAME);
+                        Log.d("name", name);
+                        String image = c.getString(TAG_IMAGE);
+                        Log.d("image", image);
+                        String desc = c.getString(TAG_DESCRIPTION);
+                        Log.d("desc", desc);
+                        //  hashmap for single match
+                        HashMap<String, String> matchProduct = new HashMap<String, String>();
+                        // adding each child node to HashMap key => value
+                        matchProduct.put(TAG_NAME, name);
+                        matchProduct.put(TAG_IMAGE, image);
+                        matchProduct.put(TAG_DESCRIPTION, desc);
+                        
+                        Bitmap image_lux = BitmapFactory.decodeResource(getResources(), R.drawable.p_baby);
+                        Product jsonProduct = new Product(name, image_lux, desc);
+                        if(!db.isProduct(jsonProduct))
+                        {
+                        db.addProduct(jsonProduct);
+                        } 
+                        matchProductList.add(matchProduct);
+                    }
+                }
+                catch (JSONException e) {
+                    Log.d("catch", "in the catch");
+                    e.printStackTrace();
+                }
+            } else {
+                Log.e("JSON Data", "Didn't receive any data from server!");
+            }
+            return null;
+        }
+        @Override
+            protected void onPostExecute(Void result) {
+            super.onPostExecute(result);
+            //--- sqllite initiate ---//
+            
+            
+            // delete old database
+            
+           
+        }
     }
 }

@@ -112,6 +112,23 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
     	return image;
     }
     **/
+    // check for product
+ public boolean isProduct(Product item){
+    	
+    	Log.d("isProduct name=",item.toString());
+    	
+    	SQLiteDatabase db = this.getWritableDatabase();
+    	//SQLiteDatabase db = this.getReadableDatabase();
+    	Cursor cursor = db.query(TABLE_PRODUCTS, COLUMNS, KEY_NAME + " = ?",new String[]{item.getname()},null, null, null,null);
+    	//Cursor cursor = db.query(TABLE_PRODUCTS, COLUMNS, "id = ?", new String[]{String.valueOf(3)},null, null, null,null);
+    	//Cursor cursor = db.query(TABLE_PRODUCTS, COLUMNS, "name=Hamam",null,null, null, null);
+    	if (cursor != null && cursor.moveToFirst())
+    		return true;
+    	else
+    		return false;
+    }
+    
+    
     
     // get product description
     public String getProductDescription(Product item){
