@@ -1,5 +1,13 @@
 package org.letsbuyindian.lbi_test1;
  
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.net.URL;
+import java.net.URLConnection;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -13,11 +21,10 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Environment;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ListAdapter;
-import android.widget.SimpleAdapter;
  
 public class MainActivity extends Activity {
 	public static String mainCat;
@@ -214,28 +221,42 @@ public class MainActivity extends Activity {
                     Log.d("json aray", "user point array");
               
                     Log.d("len", "get array length");
+                    
+                    // Directory in SD card for storage of pictures
+                    File image_dir = new File(Environment.getExternalStorageDirectory().getPath() + "/LetsBuyIndian");
+                    String dest_file_path = "";
+                    
                     for (int i = 0; i < matchProduct.length(); i++) {
                         JSONObject c = matchProduct.getJSONObject(i);
                         String name = c.getString(TAG_NAME);
                         Log.d("name", name);
-                        String image = c.getString(TAG_IMAGE);
-                        Log.d("image", image);
+                        String image_url = c.getString(TAG_IMAGE);
+                        Log.d("image", image_url);
                         String desc = c.getString(TAG_DESCRIPTION);
                         Log.d("desc", desc);
+                        Log.d("Image storage directory",image_dir.getPath());
+                        if (image_dir.mkdir()||image_dir.isDirectory()){
+                        	Log.d("Image storage directory",image_dir.getPath());
+                        	dest_file_path = image_dir.getPath() + "/" + name + ".png";
+                        }
+                        Log.d("Image storage location",dest_file_path);
+                        /**
                         //  hashmap for single match
                         HashMap<String, String> matchProduct = new HashMap<String, String>();
                         // adding each child node to HashMap key => value
                         matchProduct.put(TAG_NAME, name);
                         matchProduct.put(TAG_IMAGE, image);
                         matchProduct.put(TAG_DESCRIPTION, desc);
-                        
-                        Bitmap image_lux = BitmapFactory.decodeResource(getResources(), R.drawable.p_baby);
-                        Product jsonProduct = new Product(name, image_lux, desc);
+                        **/
+                        downloadImageFromUrl(image_url,dest_file_path);
+                        Bitmap image = BitmapFactory.decodeFile(dest_file_path);
+                        //Bitmap image = BitmapFactory.decodeResource(getResources(), R.drawable.p_baby);
+                        Product jsonProduct = new Product(name, image, desc);
                         if(!db.isProduct(jsonProduct))
                         {
-                        db.addProduct(jsonProduct);
+                        	db.addProduct(jsonProduct);
                         } 
-                        matchProductList.add(matchProduct);
+                        //matchProductList.add(matchProduct);
                     }
                 }
                 catch (JSONException e) {
@@ -247,6 +268,34 @@ public class MainActivity extends Activity {
             }
             return null;
         }
+        
+        public void downloadImageFromUrl(String url, String dest_file_path) {
+            try {
+                File dest_file = new File(dest_file_path);
+                Log.d("destinationfile path", dest_file_path);
+                URL u = new URL(url);
+                URLConnection conn = u.openConnection();
+                int contentLength = conn.getContentLength();
+                DataInputStream stream = new DataInputStream(u.openStream());
+                byte[] buffer = new byte[contentLength];
+                stream.readFully(buffer);
+                stream.close();
+                DataOutputStream fos = new DataOutputStream(new FileOutputStream(dest_file));
+                fos.write(buffer);
+                fos.flush();
+                fos.close();
+                //Intent intent = new Intent(getApplicationContext(), ImageScreen.class);
+                //intent.putExtra("path", dest_file_path);
+                //startActivity(intent);             
+            } catch(FileNotFoundException e) {
+                Log.d("FILENOTFOUDEXCEPTION",e.toString() );
+                return; 
+            } catch (IOException e) {
+
+                Log.d("IOEXCEPTION",e.toString() );
+                return; 
+            }
+      }
         @Override
             protected void onPostExecute(Void result) {
             super.onPostExecute(result);
